@@ -186,7 +186,7 @@ func checkAndAlert(db *sql.DB) {
             FROM settlement_daily
             WHERE "date" = CURRENT_DATE-1
             and token_id ='ALEO'
-            and payment_status='initial'
+            and payment_status in ('initial','paying')
         ) AND status != 1;
     `).Scan(&pendingCount)
 	if err != nil {
